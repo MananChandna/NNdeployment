@@ -20,7 +20,7 @@ def save_model(theta0,theta):
 
     with open(pkl_file_path,"wb") as file_handle:
 
-        file_handle.dump({"biases":theta0,"weights":theta})
+        file_handle.dump({"biases":theta0,"weights":theta},"activations":config.f)
 
 
 def load_model("file_name"):
@@ -28,6 +28,6 @@ def load_model("file_name"):
 
     with open(pkl_file_path,"rb") as file_handle:
 
-        trained_params = file_handle.load()
+        loaded_model = file_handle.load()
 
-    return trained_params["biases"], trained_params["weights"]
+    return loaded_model
