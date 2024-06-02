@@ -1,8 +1,9 @@
 import os
-import pandas as pandas
+import pandas as pd
 import pickle
 
 from src.config import config
+
 
 def load_dataset(file_name):
 
@@ -16,18 +17,22 @@ def load_dataset(file_name):
 
 def save_model(theta0,theta):
 
-    pkl_file_path = os.path.join(config.SAVED_MODEL_PATH,"two_inpu_xor_nn.pkl")
+    pkl_file_path = os.path.join(config.SAVED_MODEL_PATH,"two_input_xor_nn.pkl")
 
     with open(pkl_file_path,"wb") as file_handle:
+        file_handle.dump({"params":{"biases":theta0,"weights":theta},"activations":config.f})
 
-        file_handle.dump({"biases":theta0,"weights":theta},"activations":config.f)
+    print("Saved model with file name {} at {}".format("two_input_xor_nn.pkl",config.SAVED_MODEL_PATH))
 
 
-def load_model("file_name"):
+def load_model(file_name):
+
     pkl_file_path = os.path.join(config.SAVED_MODEL_PATH,file_name)
 
     with open(pkl_file_path,"rb") as file_handle:
-
         loaded_model = file_handle.load()
 
     return loaded_model
+
+
+    
