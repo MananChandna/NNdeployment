@@ -14,5 +14,5 @@ MINI_BATCH_SIZE = 1
 PACKAGE_ROOT = pathlib.Path(src.__file__).resolve().parent
 DATAPATH = os.path.join(PACKAGE_ROOT,"datasets") 
 #"/src/datasets"
-SAVED_MODEL_PATH = os.path.join(PACKAGE_ROOT,"trained_models")
+SAVED_MODEL_PATH = os.path.join(PACKAGE_ROOT,"trained_model")
 #"/src/trained_models"
