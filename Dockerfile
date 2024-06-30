@@ -12,6 +12,8 @@ RUN pip install -r /app/src/requirements.txt
 
 ENV PYTHONPATH=${PYTHONPATH}:/app/src
 
-ENTRYPOINT [ "python3" ]
+COPY entrypoint.sh /app/entrypoint.sh
 
-CMD ["./src/train_pipeline.py"]
+RUN chmod +x /app/entrypoint.sh
+
+ENTRYPOINT ["/app/entrypoint.sh"]
